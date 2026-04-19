@@ -3,6 +3,7 @@
     background: url(base.png);
     height: 600px;
     width: 806px;
+    background-size: 100% 100%;
     /*    margin-left: -403px;
         margin-top: -280px;*/
 }
