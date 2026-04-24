@@ -1,5 +1,4 @@
 /*BEGIN PS4 Controller Styling*/
-/* Basis bleibt gleich */
 .controller.ds4 {
     position: relative;
     background: url(base.png);
@@ -7,10 +6,10 @@
     width: 806px;
 
     animation: breathe 3s ease-in-out infinite;
-    overflow: hidden; /* wichtig für Sweep */
+    overflow: hidden;
 }
 
-/* Breath Effekt */
+/* Breath bleibt */
 @keyframes breathe {
     0% {
         filter: drop-shadow(0 0 5px rgba(120,0,0,0.3));
@@ -23,45 +22,43 @@
     }
 }
 
-/* ✨ Licht-Schein */
+/* ✨ FIXED Light Sweep */
 .controller.ds4::before {
     content: "";
     position: absolute;
     top: 0;
-    left: -150%; /* startet außerhalb */
-    width: 50%;
+    left: 0; /* bleibt FIX */
+    width: 100%;
     height: 100%;
 
     background: linear-gradient(
         120deg,
-        transparent 0%,
-        rgba(255,255,255,0.0) 40%,
-        rgba(255,255,255,0.4) 50%,
-        rgba(255,255,255,0.0) 60%,
-        transparent 100%
+        transparent 40%,
+        rgba(255,255,255,0.5) 50%,
+        transparent 60%
     );
 
-    transform: skewX(-20deg);
+    transform: translateX(-150%) skewX(-20deg);
     pointer-events: none;
 
     animation: sweep 6s infinite;
 }
 
-/* Bewegung */
+/* Nur transform → KEIN Layout Shift */
 @keyframes sweep {
     0% {
-        left: -150%;
+        transform: translateX(-150%) skewX(-20deg);
         opacity: 0;
     }
-    10% {
+    15% {
         opacity: 1;
     }
-    40% {
-        left: 150%;
+    50% {
+        transform: translateX(150%) skewX(-20deg);
         opacity: 0;
     }
     100% {
-        left: 150%;
+        transform: translateX(150%) skewX(-20deg);
         opacity: 0;
     }
 }
