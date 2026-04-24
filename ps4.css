@@ -1,10 +1,40 @@
 /*BEGIN PS4 Controller Styling*/
 .controller.ds4 {
+    position: relative; /* wichtig */
     background: url(base.png);
     height: 600px;
     width: 806px;
-    /*    margin-left: -403px;
-        margin-top: -280px;*/
+}
+
+/* Glow Layer */
+.controller.ds4::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px; /* optional, je nach Controllerform */
+    
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.4);
+    
+    opacity: 0.6;
+    pointer-events: none;
+    
+    animation: breathe 3s ease-in-out infinite;
+}
+
+/* Animation */
+@keyframes breathe {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 150, 255, 0.2);
+        opacity: 0.4;
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(0, 150, 255, 0.8);
+        opacity: 1;
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(0, 150, 255, 0.2);
+        opacity: 0.4;
+    }
 }
 
 .ds4.disconnected {
