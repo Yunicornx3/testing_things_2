@@ -10,13 +10,13 @@
 /* Breath Effekt */
 @keyframes breathe {
     0% {
-        filter: drop-shadow(0 0 5px rgba(0,150,255,0.3));
+        filter: drop-shadow(0 0 5px rgba(120,0,0,0.3));
     }
     50% {
-        filter: drop-shadow(0 0 25px rgba(0,150,255,0.9));
+        filter: drop-shadow(0 0 25px rgba(120,0,0,0.9));
     }
     100% {
-        filter: drop-shadow(0 0 5px rgba(0,150,255,0.3));
+        filter: drop-shadow(0 0 5px rgba(120,0,0,0.3));
     }
 }
 
