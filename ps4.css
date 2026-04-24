@@ -1,10 +1,13 @@
 /*BEGIN PS4 Controller Styling*/
+/* Basis bleibt gleich */
 .controller.ds4 {
+    position: relative;
     background: url(base.png);
     height: 600px;
     width: 806px;
 
     animation: breathe 3s ease-in-out infinite;
+    overflow: hidden; /* wichtig für Sweep */
 }
 
 /* Breath Effekt */
@@ -17,6 +20,49 @@
     }
     100% {
         filter: drop-shadow(0 0 5px rgba(120,0,0,0.3));
+    }
+}
+
+/* ✨ Licht-Schein */
+.controller.ds4::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%; /* startet außerhalb */
+    width: 50%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255,255,255,0.0) 40%,
+        rgba(255,255,255,0.4) 50%,
+        rgba(255,255,255,0.0) 60%,
+        transparent 100%
+    );
+
+    transform: skewX(-20deg);
+    pointer-events: none;
+
+    animation: sweep 6s infinite;
+}
+
+/* Bewegung */
+@keyframes sweep {
+    0% {
+        left: -150%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    40% {
+        left: 150%;
+        opacity: 0;
+    }
+    100% {
+        left: 150%;
+        opacity: 0;
     }
 }
 
